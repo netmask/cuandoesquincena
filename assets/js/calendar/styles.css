@@ -3,9 +3,12 @@
     display: grid;
     grid-gap: 5px;
 
-    grid-template-columns: repeat(7, 120px) ;
+    grid-template-columns: repeat(7, calc(100% / 6)) ;
     grid-template-rows: 30px repeat(5, 120px);
 }
+
+
+
 
 
 .day {
@@ -76,5 +79,39 @@
 
 
 .today:hover .you-are-here{
+
+}
+
+
+@media only screen and (max-device-width : 414px) {
+
+    body{
+        align-content: center;
+        text-align: center;
+    }
+
+    .calendar {
+        width: 100%;
+        display: grid;
+        grid-gap: 5px;
+
+        grid-template-columns: repeat(7, calc(calc(100% / 7) - 5px)) ;
+        grid-template-rows: 30px repeat(5, 40px);
+    }
+
+
+    .day{
+        padding: 0;
+        font-size: 9px;
+    }
+
+    .quincena .quincena-text{
+        font-size: 12px;
+    }
+
+    .today .quincena-text{
+        font-size: 12px;
+    }
+
 
 }

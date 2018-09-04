@@ -19,7 +19,7 @@ defmodule Cuandoesquincena.MixProject do
   def application do
     [
       mod: {Cuandoesquincena.Application, []},
-      extra_applications: [:logger, :runtime_tools]
+      extra_applications: [:logger, :runtime_tools, :httpotion]
     ]
   end
 
@@ -39,7 +39,9 @@ defmodule Cuandoesquincena.MixProject do
       {:gettext, "~> 0.11"},
       {:jason, "~> 1.0"},
       {:cowboy, "~> 1.0"},
-      {:timex, "~> 3.1"}
+      {:timex, "~> 3.1"},
+      {:httpotion, "~> 3.1.0"},
+      {:distillery, "~> 2.0"}
     ]
   end
 end
