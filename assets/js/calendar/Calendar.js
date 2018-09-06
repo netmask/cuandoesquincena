@@ -1,89 +1,86 @@
-import React from "react";
+import React from 'react';
 import Countdown from 'react-countdown-now';
 
-
 import Day from './Day';
+import fetchData from './fetchData';
 
+import './styles.css';
 
-import styles from "./styles.css";
-
-
-const countDownRenderer = ({ days, hours, minutes, seconds  }) => {
-    return <span> {days} dias {hours} horas {minutes} minutos {seconds} segundos </span>;
+const countDownRenderer = ({ days, hours, minutes, seconds }) => {
+  return (
+    <React.Fragment>
+      {' '}
+      {days} dias {hours} horas {minutes} minutos {seconds} segundos
+    </React.Fragment>
+  );
 };
 
-export default class Calendar extends React.Component{
+export default class Calendar extends React.Component {
+  constructor(props) {
+    super(props);
 
+    this.state = {
+      placeHolders: [],
+      drawMonths: [],
+      isToday: false,
+      next: Date.now(),
+    };
 
-    constructor(props){
-        super(props);
+    this.fetchData = this.fetchData.bind(this);
+  }
 
-        const fetchData = () => {
-            fetch('api').then(response => response.json()).then(json => {
-                const placeHolders = [];
-                const drawMonths = {};
+  componentDidMount() {
+    setInterval(this.fetchData, 60000);
+    this.fetchData();
+  }
 
-                console.log(json);
+  fetchData() {
+    fetchData().then(({ placeHolders, drawMonths, json }) => {
+      this.setState({
+        placeHolders: placeHolders,
+        drawMonths: drawMonths,
+        isToday: json.is_today,
+        next: Date.parse(json.next),
+      });
+    });
+  }
 
-                for (let i = 0; i < json.month_dates[0].weekday - 1; i++) {
-                    placeHolders.push(<div key={`placeholder-${i}`} />);
-                }
-
-                json.month_dates.forEach(date => {
-                    drawMonths[date.day] = Object.assign(date, { quincena: false, active: false, today: false });
-                });
-
-                json.dates_until.forEach(date => {
-                    drawMonths[date.day].active = true;
-                });
-
-                drawMonths[json.next_day].quincena = true;
-
-                drawMonths[json.today_day].today = true;
-
-                this.setState({
-                    placeHolders: placeHolders,
-                    drawMonths: drawMonths,
-                    isToday: json.is_today,
-                    next: Date.parse(json.next)
-                });
-
-            })
-        };
-
-        fetchData();
-        setInterval(fetchData, 60000);
-
-        this.state = {
-            placeHolders: [],
-            drawMonths: [],
-            isToday: false,
-            next: Date.now()
-        };
-    }
-
-    render(){
-        return <div>
-
-            <div className="yes-no">{this.state.isToday ? <span>SI!</span> : <div>
-                <h1>No!</h1>
-            </div> }</div>
-
-            <div className="calendar">
-                <div className="calendar-title">L</div>
-                <div className="calendar-title">M</div>
-                <div className="calendar-title">M</div>
-                <div className="calendar-title">J</div>
-                <div className="calendar-title">V</div>
-                <div className="calendar-title">S</div>
-                <div className="calendar-title">D</div>
-                {this.state.placeHolders}
-                {Object.values(this.state.drawMonths).map((dom) => { return <Day key={dom.day} day={dom}/>;}) }
+  render() {
+    return (
+      <React.Fragment>
+        <div className="yes-no">
+          {this.state.isToday ? (
+            <span>SI!</span>
+          ) : (
+            <div>
+              <h1>No!</h1>
             </div>
+          )}
+        </div>
 
-            {!this.state.isToday && <div className="countdown-text">faltan
-                <Countdown date={this.state.next} renderer={countDownRenderer} />
-            </div>}
-        </div>;
-    }
+        <div className="calendar-grid-container">
+          <div className="calendar">
+            <div className="calendar-title">L</div>
+            <div className="calendar-title">M</div>
+            <div className="calendar-title">M</div>
+            <div className="calendar-title">J</div>
+            <div className="calendar-title">V</div>
+            <div className="calendar-title">S</div>
+            <div className="calendar-title">D</div>
+            {this.state.placeHolders}
+            {Object.values(this.state.drawMonths).map(dom => {
+              return <Day key={dom.day} day={dom} />;
+            })}
+          </div>
+        </div>
+
+        {!this.state.isToday && (
+          <div className="countdown-text">
+            faltan
+            <Countdown date={this.state.next} renderer={countDownRenderer} />
+          </div>
+        )}
+      </React.Fragment>
+    );
+  }
 }
