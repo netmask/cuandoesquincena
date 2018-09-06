@@ -1,117 +1,103 @@
 .calendar {
-    width: 100%;
-    display: grid;
-    grid-gap: 5px;
-
-    grid-template-columns: repeat(7, calc(100% / 6)) ;
-    grid-template-rows: 30px repeat(5, 120px);
+  width: 100%;
+  display: grid;
+  grid-gap: 5px;
+  grid-template-columns: repeat(7, auto);
+  grid-template-rows: 30px repeat(5, 120px);
 }
 
-
-
-
-
 .day {
-    display: flex;
-    text-align: center;
-
-    padding-left: 20px;
-    padding-top: 5px;
-    font-weight: 800;
-    font-size: 24px;
-
-    background-color: #f5f5f7;
-    border: 1px solid rgba(96, 108, 118, 0.22);
-    color: rgba(0, 0, 0, 0.43);
-    border-radius: 3px;
+  display: flex;
+  text-align: center;
+  padding-left: 20px;
+  padding-top: 5px;
+  font-weight: 800;
+  font-size: 24px;
+  background-color: #f5f5f7;
+  border: 1px solid rgba(96, 108, 118, 0.22);
+  color: rgba(0, 0, 0, 0.43);
+  border-radius: 3px;
 }
 
 .weekend {
-    background-color: rgba(0, 155, 255, 0.41);
+  background-color: rgba(0, 155, 255, 0.41);
 }
 
 .active {
-    color: black;
-    background-color: rgba(255, 83, 68, 0.44);
+  color: black;
+  background-color: rgba(255, 83, 68, 0.44);
 }
 
 .quincena {
-    text-align: center;
-    border: 2px solid;
-    background-color: rgba(204, 23, 0, 0.79);
-    color: black;
-    padding-left: 0px;
-    padding-top: 15px;
+  text-align: center;
+  border: 2px solid;
+  background-color: rgba(204, 23, 0, 0.79);
+  color: black;
+  padding-left: 0px;
+  padding-top: 15px;
 }
 
 .quincena-text {
+  text-align: center;
+  position: relative;
+}
+
+.quincena .quincena-text {
+  margin: 0 auto;
+  font-size: 52px;
+}
+
+.today {
+  background-color: black;
+  color: #f9f9fa;
+  padding-left: 0px;
+}
+
+.today .quincena-text {
+  font-size: 52px;
+  margin: 0 auto;
+  padding-top: 10px;
+}
+
+.you-are-here {
+  display: block;
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  top: 0;
+  background-image: url("/images/here_arrow.svg");
+}
+
+.calendar-grid-container {
+  max-width: 764px;
+  padding: 0 20px;
+  width: 100vw;
+}
+
+@media only screen and (max-device-width : 764px) {
+  body {
+    align-content: center;
     text-align: center;
-    position: relative;
-}
+  }
 
-.quincena .quincena-text{
-    margin: 0 auto;
-    font-size: 52px;
-}
+  .calendar {
+    width: 100%;
+    display: grid;
+    grid-gap: 5px;
+    grid-template-columns: repeat(7, calc(calc(100% / 7) - 5px));
+    grid-template-rows: 30px repeat(5, 40px);
+  }
 
-.today{
-    background-color: black;
-    color: #f9f9fa;
-    padding-left: 0px;
+  .day {
+    padding: 0;
+    font-size: 9px;
+  }
 
-}
+  .quincena .quincena-text {
+    font-size: 12px;
+  }
 
-.today .quincena-text{
-    font-size: 52px;
-    margin: 0 auto;
-    padding-top: 10px;
-}
-
-
-.you-are-here{
-    display: block;
-    position: absolute;
-    width: 100px;
-    height: 100px;
-    top: 0;
-    background-image: url("/images/here_arrow.svg");
-}
-
-
-.today:hover .you-are-here{
-
-}
-
-
-@media only screen and (max-device-width : 414px) {
-
-    body{
-        align-content: center;
-        text-align: center;
-    }
-
-    .calendar {
-        width: 100%;
-        display: grid;
-        grid-gap: 5px;
-
-        grid-template-columns: repeat(7, calc(calc(100% / 7) - 5px)) ;
-        grid-template-rows: 30px repeat(5, 40px);
-    }
-
-
-    .day{
-        padding: 0;
-        font-size: 9px;
-    }
-
-    .quincena .quincena-text{
-        font-size: 12px;
-    }
-
-    .today .quincena-text{
-        font-size: 12px;
-    }
-
-
+  .today .quincena-text {
+    font-size: 12px;
+  }
 }
