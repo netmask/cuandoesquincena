@@ -40,6 +40,7 @@ export default class Calendar extends React.Component {
         placeHolders: placeHolders,
         drawMonths: drawMonths,
         isToday: json.is_today,
+        sillyImage: json.payday_image,
         next: Date.parse(json.next),
       });
     });
@@ -69,7 +70,7 @@ export default class Calendar extends React.Component {
             <div className="calendar-title">D</div>
             {this.state.placeHolders}
             {Object.values(this.state.drawMonths).map(dom => {
-              return <Day key={dom.day} day={dom} />;
+              return <Day key={dom.day} day={dom} sillyImage={this.state.sillyImage} />;
             })}
           </div>
         </div>

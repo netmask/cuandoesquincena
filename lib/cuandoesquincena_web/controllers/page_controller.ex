@@ -22,7 +22,16 @@ defmodule CuandoesquincenaWeb.PageController do
       month_dates: cal.month_dates,
       next_day: cal.next_quincena.day,
       today_day: Timex.local.day, # :D
-      is_today: cal.is_today
+      is_today: cal.is_today,
+      payday_image: silly_image()
     }
   end
+
+
+  def silly_image,
+      do:
+        :ets.lookup(:cached_images, "payday")
+          |> List.first
+          |> elem(1)
+        
 end

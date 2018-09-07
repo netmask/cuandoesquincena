@@ -11,6 +11,7 @@ use Mix.Config
 # before starting your production server.
 
 config :cuandoesquincena, CuandoesquincenaWeb.Endpoint,
+       force_ssl: [rewrite_on: [:x_forwarded_proto]],
        http: [port: 8080],
        url: [host: "cuandoesquincena.com", port: 80],
        cache_static_manifest: "priv/static/manifest.json"

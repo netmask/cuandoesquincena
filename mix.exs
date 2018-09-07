@@ -41,6 +41,7 @@ defmodule Cuandoesquincena.MixProject do
       {:cowboy, "~> 1.0"},
       {:timex, "~> 3.1"},
       {:httpotion, "~> 3.1.0"},
+      {:poison, "~> 3.1"},
       {:distillery, "~> 2.0"}
     ]
   end

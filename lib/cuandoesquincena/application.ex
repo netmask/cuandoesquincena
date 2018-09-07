@@ -9,9 +9,9 @@ defmodule Cuandoesquincena.Application do
     # List all child processes to be supervised
     children = [
       # Start the endpoint when the application starts
-      CuandoesquincenaWeb.Endpoint
+      CuandoesquincenaWeb.Endpoint,
+      Cuandoesquincena.Giphy
       # Starts a worker by calling: Cuandoesquincena.Worker.start_link(arg)
-      # {Cuandoesquincena.Worker, arg},
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
