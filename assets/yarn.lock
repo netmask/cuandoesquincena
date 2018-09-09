@@ -27,11 +27,21 @@ abbrev@1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/abbrev/-/abbrev-1.1.1.tgz#f8f2c887ad10bf67f634f005b6987fed3179aac8"
 
+acorn-dynamic-import@^2.0.0:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/acorn-dynamic-import/-/acorn-dynamic-import-2.0.2.tgz#c752bd210bef679501b6c6cb7fc84f8f47158cc4"
+  dependencies:
+    acorn "^4.0.3"
+
 acorn-dynamic-import@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/acorn-dynamic-import/-/acorn-dynamic-import-3.0.0.tgz#901ceee4c7faaef7e07ad2a47e890675da50a278"
   dependencies:
     acorn "^5.0.0"
+
+acorn@^4.0.3:
+  version "4.0.13"
+  resolved "https://registry.yarnpkg.com/acorn/-/acorn-4.0.13.tgz#105495ae5361d697bd195c825192e1ad7f253787"
 
 acorn@^5.0.0:
   version "5.7.2"
@@ -1350,6 +1360,16 @@ cloneable-readable@^1.0.0:
     process-nextick-args "^2.0.0"
     readable-stream "^2.3.5"
 
+closure-webpack-plugin@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/closure-webpack-plugin/-/closure-webpack-plugin-1.0.1.tgz#70c0e14b85d7a4300d4ffd1e4bd871a05658d197"
+  dependencies:
+    acorn "^5.0.0"
+    acorn-dynamic-import "^2.0.0"
+    google-closure-compiler ">=20180716.0.1"
+    schema-utils "^0.4.5"
+    webpack-sources "^1.0.1"
+
 coa@~1.0.1:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/coa/-/coa-1.0.4.tgz#a9ef153660d6a86a8bdec0289a5c684d217432fd"
@@ -2245,6 +2265,26 @@ globby@^8.0.1:
     ignore "^3.3.5"
     pify "^3.0.0"
     slash "^1.0.0"
+
+google-closure-compiler-linux@^20180805.0.0:
+  version "20180805.0.0"
+  resolved "https://registry.yarnpkg.com/google-closure-compiler-linux/-/google-closure-compiler-linux-20180805.0.0.tgz#f6e0a7dca90a61181a7dea6f5748305645d9a1b7"
+
+google-closure-compiler-osx@^20180805.0.0:
+  version "20180805.0.0"
+  resolved "https://registry.yarnpkg.com/google-closure-compiler-osx/-/google-closure-compiler-osx-20180805.0.0.tgz#71bc29b8dcd4882742709af01466ca1958e229c0"
+
+google-closure-compiler@>=20180716.0.1:
+  version "20180805.0.0"
+  resolved "https://registry.yarnpkg.com/google-closure-compiler/-/google-closure-compiler-20180805.0.0.tgz#9e2a9d0794a2033b276ab13c807a3671a7d93dbf"
+  dependencies:
+    chalk "^1.0.0"
+    minimist "^1.2.0"
+    vinyl "^2.0.1"
+    vinyl-sourcemaps-apply "^0.2.0"
+  optionalDependencies:
+    google-closure-compiler-linux "^20180805.0.0"
+    google-closure-compiler-osx "^20180805.0.0"
 
 got@^7.0.0:
   version "7.1.0"
@@ -4553,7 +4593,7 @@ source-map-url@^0.4.0:
   version "0.4.0"
   resolved "https://registry.yarnpkg.com/source-map-url/-/source-map-url-0.4.0.tgz#3e935d7ddd73631b97659956d55128e87b5084a3"
 
-source-map@^0.5.3, source-map@^0.5.6, source-map@^0.5.7:
+source-map@^0.5.1, source-map@^0.5.3, source-map@^0.5.6, source-map@^0.5.7:
   version "0.5.7"
   resolved "https://registry.yarnpkg.com/source-map/-/source-map-0.5.7.tgz#8a039d2d1021d22d1ea14c80d8ea468ba2ef3fcc"
 
@@ -4990,6 +5030,12 @@ vinyl-file@^2.0.0:
     strip-bom "^2.0.0"
     strip-bom-stream "^2.0.0"
     vinyl "^1.1.0"
+
+vinyl-sourcemaps-apply@^0.2.0:
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/vinyl-sourcemaps-apply/-/vinyl-sourcemaps-apply-0.2.1.tgz#ab6549d61d172c2b1b87be5c508d239c8ef87705"
+  dependencies:
+    source-map "^0.5.1"
 
 vinyl@^1.1.0:
   version "1.2.0"
