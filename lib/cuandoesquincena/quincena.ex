@@ -37,7 +37,7 @@ defmodule Cuandoesquincena.Quincena do
   def interval_until(interval),
     do: next_quincena() |> diff(local(), interval)
 
-  def next_canonical_date(%Date{year: year, month: month, day: day} = payday) when day > 15,
+  def next_canonical_date(%DateTime{year: year, month: month, day: day} = payday) when day > 15,
     do: %{payday | day: :calendar.last_day_of_the_month(year, month)}
 
   def next_canonical_date(payday), do: %{payday | day: 15}
