@@ -33,6 +33,9 @@ defmodule Cuandoesquincena.Quincena do
       |> interval_to_date_array
 
   def dates_between_interval, do: Interval.new(from: local(), until: next_quincena())
+  def dates_between_quincenas, do: Interval.new(from: prev_quincena(), until: next_quincena())
+
+  def dates_between, do: interval_to_date_array dates_between_quincenas()
 
   def interval_until(interval),
     do: next_quincena() |> diff(local(), interval)
