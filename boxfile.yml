@@ -3,13 +3,13 @@ run.config:
   engine.config:
     runtime: elixir-1.7
   extra_packages:
-  - git
+    - git
 
   # we need nodejs in development
   # ensure inotify exists for hot-code reloading
   dev_packages:
-  - nodejs
-  - inotify-tools
+    - nodejs
+    - inotify-tools
 
   # cache node_modules
   cache_dirs:
@@ -25,7 +25,7 @@ run.config:
 deploy.config:
   # generate the static assets digest
   extra_steps:
-  - mix phx.digest
+    - mix phx.digest
 
 web.main:
   start: node-start mix phx.server
